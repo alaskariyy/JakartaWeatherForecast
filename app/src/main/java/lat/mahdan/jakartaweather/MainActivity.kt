@@ -22,7 +22,7 @@ import rx.schedulers.Schedulers
 
 class MainActivity : AppCompatActivity() {
 
-    private val wikiApiServe by lazy {
+    private val service by lazy {
         Service.create()
     }
 
@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         val binding = DataBindingUtil.setContentView<ViewDataBinding>(this, R.layout.activity_main)
         binding.setVariable(BR.weather, WeatherNowViewModel(weatherDefault))
 
-        wikiApiServe.getWeatherNow()
+        service.getWeatherNow()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
                         }
                 )
 
-        wikiApiServe.getWeatherList()
+        service.getWeatherList()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(

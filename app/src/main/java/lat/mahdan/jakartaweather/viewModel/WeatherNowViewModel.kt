@@ -2,6 +2,7 @@ package lat.mahdan.jakartaweather.viewModel
 
 import android.databinding.BaseObservable
 import android.databinding.Bindable
+import lat.mahdan.jakartaweather.BR
 import lat.mahdan.jakartaweather.model.WeatherNowResponse
 import java.math.RoundingMode
 import java.text.DecimalFormat
@@ -17,7 +18,7 @@ class WeatherNowViewModel(private val weatherNowResponse: WeatherNowResponse) : 
     }
 
     override fun update(o: Observable?, arg: Any?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        notifyPropertyChanged(BR._all)
     }
 
     val dt_txt: String
